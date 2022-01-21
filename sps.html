@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stone, Paper and Scissors Game</title>
+</head>
+
+<body>
+  <h1>
+    Source Code for the Stone Paper Scissors Game
+  </h1>
+  <pre>
+    import random
+
+def game(comp, a):
+    if comp ==a :
+        return None
+    if comp == "a" :
+        if a == "p":
+            return True
+        elif a=="c":
+            return False
+    if comp == "b" :
+        if a == "c":
+            return True
+        elif a=="s":
+            return False
+    if comp == "c" :
+        if a == "s":
+            return True
+        elif a == "p":
+            return False
+
+def compchoice(comp)   :
+    if comp == "a":
+        return("computer chose for stone")
+    elif comp== "b":
+        return("computer chose for paper")
+    else :
+        return("computer chose for scissors")
+
+def yourchoice(a) :
+    if a == "s":
+        return("you chose for stone")
+    elif a=="p":
+        return ("you chose for paper")
+    elif a == "c":
+        return ("you chose for scissors")
+
+
+print("computer's turn choose your move stone(1),paper(2) and scissors(3)")
+randno = random .randint(1,3)
+if randno == 1:
+    comp = "a"
+elif randno ==2:
+    comp = "b"
+elif randno == 3:
+    comp = "c"
+
+a= input("player's turn choose you move stone(s),paper(p) and scissors(c)")
+
+e = compchoice(comp)
+print(e)
+w = yourchoice(a)
+print(w)
+
+q=game(comp, a)
+
+
+if q == None :
+    print("it's a tie play again")
+elif q == True :
+    print("you win")
+elif q == False :
+    print("you lose")
+  </pre>
+</body>
+
+</html>

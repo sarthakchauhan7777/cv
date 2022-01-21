@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Guess Number Game</title>
+</head>
+
+<body>
+  <h1>Source Code for Guess The Right Number Game</h1>
+  <pre>
+import random
+
+randNumber = random.randint(1,100)
+userguess = None
+guessesno = 0
+
+while(userguess != randNumber):
+    userguess = int(input('enter Your Guess: '))
+    guessesno += 1
+
+    if userguess == randNumber:
+        print("You Won!!! you've guessed the right number")
+    else :
+        if userguess>randNumber:
+            print("you've guessed it wrong; the no. is somewhat LESSER than what you've guessed")
+
+        else :
+            print("you've guessed it wrong; teh no. is somewhat GREATER than what you've guessed")
+
+
+print(f"you've guessed it right in {guessesno} attempts ")
+
+with open ('highscoreguessgame.txt')as f:
+    preHighscore = int(f.read())
+
+if guessesno <  preHighscore:
+    print("congrates!!! you've broken the highscore")
+    with open ('highscoreguessgame.txt','w') as f:
+        f.write(str(guessesno))
+  </pre>
+</body>
+
+</html>

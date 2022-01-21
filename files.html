@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Files Handling</title>
+</head>
+<body>
+  <h1>Source Code to Register highscore in a file</h1>
+  <pre>
+    #2 high score update
+
+
+def game():
+    return 345
+
+
+score= game()
+with open('highscore.txt') as f:
+    highscore = f.read()
+
+if highscore =='':
+    with open('highscore.txt','w') as f:
+        f.write(str(score))
+elif int(highscore) < score:
+    with open('highscore.txt','w') as f:
+        f.write(str(score))
+  </pre>
+  <pre>
+    #3 write multiplication table in a given folder
+
+
+for i in range(1,21):
+    with open(f"tables/Multiplication_table_of_{i}.txt",'w') as f:
+        for j in range (1,11):
+            f.write(f'{i} X {j} = {i*j}\n')
+            if j!=10:
+                print('\n')
+  </pre>
+  <pre>
+    #4 to censor the word doneky from a file donkey.txt
+
+
+with open('donkey.txt')as f:
+    Content = f.read()
+Content = Content.replace("donkey","#$^@$^%#")
+with open('donkey.txt','w')as f:
+    f.write(Content)
+  </pre>
+  <pre>
+    #5 to censor some word that are given in the list
+
+
+list=['donkey','mote','asshole','bastard','pervert','motherfucker','son of a bitch']
+with open('donkey.txt')as f:
+    Content = f.read().lower()    # convert all character to lowercase
+
+for word in list:
+    Content = Content.replace(word,"#$^@$^%#")
+with open('donkey.txt','w')as f:
+    f.write(Content)
+  </pre>
+  <pre>
+    #6 to find python written in a log file
+
+
+with open ('log_file.txt')as f:
+    data= f.read().lower()
+if 'python' in data:
+    print('the python has stopped working you need to check its working')
+else:
+    print('python is not present')
+
+  </pre>
+  <h5>you need to create a file named log_file.txt and put the log in it first in the folder you are programmming</h5>
+</body>
+</html>

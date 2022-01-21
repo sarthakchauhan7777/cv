@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Guess Number Using JAVA</title>
+</head>
+<body>
+  <h1>Source code for the Project Guess the Right Number in JAVA</h1>
+  <pre>
+    out.println("MINI PROJECT: GUESS THE NUMBER ");
+
+        int compNumber = (int)(Math.random()*100);// like this we can do random int in just one line with no error
+        //out.println(compNumber);
+        int count = 1;
+        while(compNumber>= 0){
+            Scanner u = new Scanner (System.in);
+            out.println("Enter a Number of your choice");
+            int userInput = u.nextInt();
+            if(userInput == compNumber){
+                out.println("Congratulations! You Won!!! You've guessed it Right.");
+                break;
+            }
+            else if (userInput > compNumber){
+                out.println("Try again! The Number is Lesser then the Number You've guessed.");
+            }
+            else if (userInput < compNumber){
+                out.println("Try again! The Number is Greater than the Number you've guessed.");
+            }
+            count = count + 1;
+        };
+        out.println("you've guessed it right in " +count + " attempts");
+  </pre>
+</body>
+</html>

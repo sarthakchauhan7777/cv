@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>libraray Management System</title>
+</head>
+<body>
+  <h1>Source Code for Library Management system Using OOPS</h1>
+  <pre>
+    class Library:
+    def __init__(self,listofbooks):
+        self.books = listofbooks
+    def displaybooks(self):
+        print("The books present in this library are:- ")
+        for book in self.books:
+            print("\t*" + book)
+
+    def borrowbook(self,bookName,name,days_of_borrow):
+        if bookName in self.books:
+            self.books.remove(bookName)
+            self.name = name
+            self.days_of_borrow = days_of_borrow
+            print(f"The book {bookName} has been issued to you for {days_of_borrow} days.")
+            with open ("library borrower file.txt",'a') as f:
+                f.write(f"\n{bookName} is issued to {name} for {days_of_borrow} days.")
+            return True
+        else:
+            print("SORRY: The book you mentioned either not present in the library\nor the book is unavailable at the moment please! Try again after some days")
+            return False
+
+    def fine(self,d):
+        self.d = d
+        if d <=30:
+            pass
+        else:
+            fine = ((d - 30) / 5) * 10
+            print(f"you returned the book after the free period; you have to give fine of {fine} rupees")
+            return fine
+
+    def returnbook(self,bookName):
+        self.books.append(bookName)
+        print(f"thanks for returning this book named {bookName}; hope you enjoy reading it")
+        if {bookName} not in self.books:
+            print("This book do not belong to Central Library\nDo you want to add this book to the library press Y for yes and N for no")
+            zero = input("Enter your input")
+            if zero == "Y" or "y":
+                self.books.append(bookName)
+            else:
+                print("it's okay ,have a nice day ahead;enjoy!, learn!, eat!")
+
+        with open ("library borrower file.txt") as f:
+            data = f.read()
+        if data == f"{bookName} is issued":
+            with open ("library borrower file.txt","a") as f:
+                f.write (f"\n returned {bookName} book by {self.name}")
+
+    def addbook(self,bookName):
+        self.books.append(bookName)
+        print("Thanks! for your kind gesture; This book will enrich others with knowledge")
+
+
+class Student(Library):
+    def __init__(self):
+        self.booklist =[]
+
+    def requestbook(self):
+        reqbook = input("enter the name of the book you want to borrow")
+        self.book =reqbook
+        self.booklist.append(reqbook)
+        return self.book
+
+    def returnbook(self):
+        self.book = input("enter the name of the book you want to return")
+        return self.book
+
+    def studentdetails(self, name, classs, school, days_of_borrow):
+        self.name = name
+        self.classs = classs
+        self.school = school
+        self.days_of_borrow = days_of_borrow
+
+
+if __name__ == "__main__":
+
+    Grandlibrary = Library(["how to win and influence people","think and grow rich",
+    "the power of subconcious mind","the richest person in babylon","rich dad,poor dad",
+    "the monk who sold his ferrai","think like a monk","ikigai","7 habits of highly effective people",
+    "atomic habits","phsychology of money","python machine learning","robert kiosaki set"])
+    while(True):
+        print(f'''
+        ____++++====WELCOME TO THE GRAND LIBRARY====++++____
+
+        *borrowing a book for within 30 days is free of cost;
+        after 30 days you will be charged by 10 rupees per week
+
+        please choose and option
+        press 1:        To see all the books
+        press 2:        To borrow a book
+        press 3:        To return a book
+        press 4:        To doante a book from a library
+        press 5:        To buy a book permanently
+        press Q to eixt:exit the Grand library
+        ''')
+        userinput = input("SELECT AN OPTION GIVEN ABOVE :- ")
+        if userinput == "1":
+            Grandlibrary.displaybooks()
+        elif userinput == "2":
+            bookName =input("Enter the name of book you want to borrow :- ")
+            name = input("Enter your name:- ")
+            days_of_borrow = input("Enter the number of for days you want to borrow this book")
+            Grandlibrary.borrowbook(bookName,name,days_of_borrow)
+        elif userinput == "3":
+            bookName= input("Enter the name of book you want to return:- ")
+            days_of_return = int(input("Enter the days after which you returned the book"))
+            Grandlibrary.fine(days_of_return)
+            if days_of_return > 30:
+                print("First pay the fine chareged on you")
+            else:
+                Grandlibrary.returnbook(bookName)
+        elif userinput == "4":
+            new_copy_book = input ("Enter the name of the book you want donate to this library")
+        elif userinput == "5":            print("Please contact the owner on the given contact no. or log on to the site where we sell our books")
+        elif userinput == "q" or "Q":
+            exit()
+        else:
+            print("Please! enter a valid input")
+  </pre>
+</body>
+</html>
